@@ -10,7 +10,6 @@ const productSchema = new mongoose.Schema(
     countInStock: { type: Number, required: true, default: 0 },
     description: { type: String, required: true },
     tags: { type: Array, required: true },
-    rentalLength: { type: Number },
   },
   {
     timestamps: true,

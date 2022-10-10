@@ -5,7 +5,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { Menu } from "@headlessui/react";
 import "react-toastify/dist/ReactToastify.css";
-import { ShoppingCartIcon } from "@heroicons/react/outline";
+import { ShoppingCartIcon, SearchCircleIcon } from "@heroicons/react/outline";
 import { Store } from "../utils/Store";
 import DropdownLink from "./DropdownLink";
 import Footer from "./Footer";
@@ -29,14 +29,22 @@ export default function Layout({ title, children }) {
     <>
       <HeadComponent title={title} />
 
-      <ToastContainer position="bottom-center" limit={1} />
+      <ToastContainer position="bottom-center" limit={1} theme="dark" />
 
       <div className="flex bg-blue min-h-screen flex-col justify-between">
         <header>
           <nav className="flex h-12 items-center px-4 justify-between shadow-md">
             <Link href="/">
-              <a className="text-4xl font-thin">Electric Larry&apos;s</a>
+              <a className="text-4xl font-thin lg:text-3xl sm:text-lg">
+                Electric Larry&apos;s
+              </a>
             </Link>
+            <div className="flex justify-center align-middle w-1/2 md:inline sm:hidden">
+              <input type="text" className="w-5/6 h-1/2 m-2"></input>
+              <button>
+                <SearchCircleIcon className="inline h-7 w-7" />
+              </button>
+            </div>
             <div>
               <Link href="/cart">
                 <a className="p-4">
@@ -56,7 +64,7 @@ export default function Layout({ title, children }) {
                   <Menu.Button className="tracking-wide font-thin">
                     {session.user.name}
                   </Menu.Button>
-                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
+                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white mt-4 shadow-lg">
                     <Menu.Item>
                       <DropdownLink className="dropdown-link" href="/profile">
                         Profile
