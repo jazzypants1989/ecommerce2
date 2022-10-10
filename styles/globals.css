@@ -6,43 +6,46 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  @apply text-blue-600 hover:text-blue-800;
+  @apply text-Green font-thin tracking-wider;
 }
 
 * {
   box-sizing: border-box;
 }
 
+a {
+  @apply text-orange;
+}
+
 .card {
-  @apply mb-5  block   rounded-lg border border-gray-200  shadow-md;
+  @apply mb-5  block rounded-lg border shadow-md;
 }
 
 .primary-button {
-  @apply rounded bg-amber-300 py-2 px-4 shadow outline-none hover:bg-amber-400  active:bg-amber-500;
+  @apply rounded py-2 px-4 bg-orange font-thin text-sm tracking-widest shadow outline-none hover:rounded-xl hover:bg-Green hover:text-orange transition-all duration-500 ease-in-out;
 }
 .default-button {
-  @apply rounded bg-gray-100 py-2  px-4 text-black shadow outline-none hover:bg-gray-200  active:bg-gray-300;
+  @apply rounded py-2 px-4 shadow outline-none font-thin text-sm tracking-widest hover:rounded-xl transition-all duration-500 ease-in-out;
+}
+
+.delete-button {
+  @apply h-7 w-7 hover:scale-150 hover:text-Red transition-all duration-300 ease-in-out;
 }
 
 input,
 select,
 textarea {
-  @apply rounded border p-2  outline-none ring-indigo-300  focus:ring;
+  @apply rounded border p-2 shadow outline-none text-orange focus:ring;
 }
 
 .dropdown-link {
-  @apply flex p-2 hover:bg-gray-200;
+  @apply flex p-2 tracking-widest;
 }
 
 .alert-error {
-  @apply my-3 rounded-lg bg-red-100 p-3 text-red-700;
+  @apply my-3 rounded-lg;
 }
 
 .alert-success {
-  @apply my-3 rounded-lg bg-green-100 p-3 text-green-700;
+  @apply my-3 rounded-lg p-3;
 }

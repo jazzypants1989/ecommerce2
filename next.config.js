@@ -2,8 +2,17 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['res.cloudinary.com'],
+    domains: ["res.cloudinary.com"],
   },
 };
 
-module.exports = nextConfig;
+const withTM = require("next-transpile-modules")([
+  "@square/web-sdk",
+  "react-square-web-payments-sdk",
+]);
+module.exports = withTM({
+  nextConfig,
+  experimental: {
+    esmExternals: "loose",
+  },
+});
