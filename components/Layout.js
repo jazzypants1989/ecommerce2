@@ -105,7 +105,7 @@ export default function Layout({ title, children }) {
             </div>
           </nav>
         </header>
-        <main className="container m-auto mt-4 px-4">{children}</main>
+        <main className="container m-auto mt-4 px-2">{children}</main>
         <Footer />
       </div>
     </>

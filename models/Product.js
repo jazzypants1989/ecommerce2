@@ -9,7 +9,8 @@ const productSchema = new mongoose.Schema(
     price: { type: Number, required: true },
     countInStock: { type: Number, required: true, default: 0 },
     description: { type: String, required: true },
-    tags: { type: Array, required: true },
+    tags: { type: String, required: true },
+    isRented: { type: Boolean },
   },
   {
     timestamps: true,

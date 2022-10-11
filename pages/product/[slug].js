@@ -77,7 +77,7 @@ export default function ProductScreen(props) {
             >
               Add to cart
             </button>
-            {product.category == "tv" ||
+            {product.category == "TV" ||
             (product.category == "movie" && product.countInStock >= 1) ? (
               <button className="primary-button w-full mt-2">
                 Rent It for a Week! <br /> (Only $1.99)

@@ -1,8 +1,8 @@
-import '../styles/globals.css';
-import { SessionProvider, useSession } from 'next-auth/react';
-import { StoreProvider } from '../utils/Store';
-import { useRouter } from 'next/router';
-import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import "../styles/globals.css";
+import { SessionProvider, useSession } from "next-auth/react";
+import { StoreProvider } from "../utils/Store";
+import { useRouter } from "next/router";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
@@ -27,14 +27,18 @@ function Auth({ children, adminOnly }) {
   const { status, data: session } = useSession({
     required: true,
     onUnauthenticated() {
-      router.push('/unauthorized?message=login required');
+      router.push("/unauthorized?message=login required");
     },
   });
-  if (status === 'loading') {
-    return <div>Loading...</div>;
+  if (status === "loading") {
+    return (
+      <div>
+        I&apos;m checking to see if you are cool enough to see this content.
+      </div>
+    );
   }
   if (adminOnly && !session.user.isAdmin) {
-    router.push('/unauthorized?message=admin login required');
+    router.push("/unauthorized?message=admin login required");
   }
 
   return children;

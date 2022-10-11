@@ -17,7 +17,7 @@ module.exports = {
       "Black": "#000000",
       "Yellow": "#FEFBA8",
       "Green": "#34FAC5",
-      "Gray": "8b8680",
+      "Gray": "#8b8680",
     },
     fontSize: {
       xs: "1.05rem",

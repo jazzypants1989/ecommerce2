@@ -1,6 +1,6 @@
-import axios from 'axios';
-import Link from 'next/link';
-import { Bar } from 'react-chartjs-2';
+import axios from "axios";
+import Link from "next/link";
+import { Bar } from "react-chartjs-2";
 
 import {
   Chart as ChartJS,
@@ -10,10 +10,10 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import React, { useEffect, useReducer } from 'react';
-import Layout from '../../components/Layout';
-import { getError } from '../../utils/error';
+} from "chart.js";
+import React, { useEffect, useReducer } from "react";
+import Layout from "../../components/Layout";
+import { getError } from "../../utils/error";
 
 ChartJS.register(
   CategoryScale,
@@ -28,18 +28,18 @@ export const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'top',
+      position: "top",
     },
   },
 };
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'FETCH_REQUEST':
-      return { ...state, loading: true, error: '' };
-    case 'FETCH_SUCCESS':
-      return { ...state, loading: false, summary: action.payload, error: '' };
-    case 'FETCH_FAIL':
+    case "FETCH_REQUEST":
+      return { ...state, loading: true, error: "" };
+    case "FETCH_SUCCESS":
+      return { ...state, loading: false, summary: action.payload, error: "" };
+    case "FETCH_FAIL":
       return { ...state, loading: false, error: action.payload };
     default:
       state;
@@ -49,17 +49,17 @@ function AdminDashboardScreen() {
   const [{ loading, error, summary }, dispatch] = useReducer(reducer, {
     loading: true,
     summary: { salesData: [] },
-    error: '',
+    error: "",
   });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        dispatch({ type: 'FETCH_REQUEST' });
+        dispatch({ type: "FETCH_REQUEST" });
         const { data } = await axios.get(`/api/admin/summary`);
-        dispatch({ type: 'FETCH_SUCCESS', payload: data });
+        dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
+        dispatch({ type: "FETCH_FAIL", payload: getError(err) });
       }
     };
 
@@ -70,17 +70,17 @@ function AdminDashboardScreen() {
     labels: summary.salesData.map((x) => x._id), // 2022/01 2022/03
     datasets: [
       {
-        label: 'Sales',
-        backgroundColor: 'rgba(162, 222, 208, 1)',
+        label: "Sales",
+        backgroundColor: "rgba(162, 222, 208, 1)",
         data: summary.salesData.map((x) => x.totalSales),
       },
     ],
   };
   return (
     <Layout title="Admin Dashboard">
-      <div className="grid  md:grid-cols-4 md:gap-5">
+      <div className="grid md:grid-cols-4 md:gap-5">
         <div>
-          <ul>
+          <ul className="text-base">
             <li>
               <Link href="/admin/dashboard">
                 <a className="font-bold">Dashboard</a>
@@ -130,7 +130,7 @@ function AdminDashboardScreen() {
               <h2 className="text-xl">Sales Report</h2>
               <Bar
                 options={{
-                  legend: { display: true, position: 'right' },
+                  legend: { display: true, position: "right" },
                 }}
                 data={data}
               />

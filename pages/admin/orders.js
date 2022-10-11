@@ -1,16 +1,16 @@
-import axios from 'axios';
-import Link from 'next/link';
-import React, { useEffect, useReducer } from 'react';
-import Layout from '../../components/Layout';
-import { getError } from '../../utils/error';
+import axios from "axios";
+import Link from "next/link";
+import React, { useEffect, useReducer } from "react";
+import Layout from "../../components/Layout";
+import { getError } from "../../utils/error";
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'FETCH_REQUEST':
-      return { ...state, loading: true, error: '' };
-    case 'FETCH_SUCCESS':
-      return { ...state, loading: false, orders: action.payload, error: '' };
-    case 'FETCH_FAIL':
+    case "FETCH_REQUEST":
+      return { ...state, loading: true, error: "" };
+    case "FETCH_SUCCESS":
+      return { ...state, loading: false, orders: action.payload, error: "" };
+    case "FETCH_FAIL":
       return { ...state, loading: false, error: action.payload };
     default:
       state;
@@ -21,17 +21,17 @@ export default function AdminOrderScreen() {
   const [{ loading, error, orders }, dispatch] = useReducer(reducer, {
     loading: true,
     orders: [],
-    error: '',
+    error: "",
   });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        dispatch({ type: 'FETCH_REQUEST' });
+        dispatch({ type: "FETCH_REQUEST" });
         const { data } = await axios.get(`/api/admin/orders`);
-        dispatch({ type: 'FETCH_SUCCESS', payload: data });
+        dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
+        dispatch({ type: "FETCH_FAIL", payload: getError(err) });
       }
     };
     fetchData();
@@ -41,7 +41,7 @@ export default function AdminOrderScreen() {
     <Layout title="Admin Dashboard">
       <div className="grid md:grid-cols-4 md:gap-5">
         <div>
-          <ul>
+          <ul className="text-base">
             <li>
               <Link href="/admin/dashboard">Dashboard</Link>
             </li>
@@ -84,7 +84,7 @@ export default function AdminOrderScreen() {
                     <tr key={order._id} className="border-b">
                       <td className="p-5">{order._id.substring(20, 24)}</td>
                       <td className="p-5">
-                        {order.user ? order.user.name : 'DELETED USER'}
+                        {order.user ? order.user.name : "DELETED USER"}
                       </td>
                       <td className="p-5">
                         {order.createdAt.substring(0, 10)}
@@ -93,12 +93,12 @@ export default function AdminOrderScreen() {
                       <td className="p-5">
                         {order.isPaid
                           ? `${order.paidAt.substring(0, 10)}`
-                          : 'not paid'}
+                          : "not paid"}
                       </td>
                       <td className="p-5">
                         {order.isDelivered
                           ? `${order.deliveredAt.substring(0, 10)}`
-                          : 'not delivered'}
+                          : "not delivered"}
                       </td>
                       <td className="p-5">
                         <Link href={`/order/${order._id}`} passHref>
