@@ -5,17 +5,19 @@ import React, { useContext, useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { Menu } from "@headlessui/react";
 import "react-toastify/dist/ReactToastify.css";
-import { ShoppingCartIcon, SearchCircleIcon } from "@heroicons/react/outline";
-import { Store } from "../utils/Store";
+import { ShoppingCartIcon } from "@heroicons/react/outline";
 import DropdownLink from "./DropdownLink";
 import Footer from "./Footer";
 import HeadComponent from "./HeadComponent";
+import { Store } from "../utils/Store";
+import Search from "./SearchWithUseRef";
 
 export default function Layout({ title, children }) {
   const { status, data: session } = useSession();
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const [cartItemsCount, setCartItemsCount] = useState(0);
+
   useEffect(() => {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
   }, [cart.cartItems]);
@@ -25,6 +27,7 @@ export default function Layout({ title, children }) {
     dispatch({ type: "CART_RESET" });
     signOut({ callbackUrl: "/login" });
   };
+
   return (
     <>
       <HeadComponent title={title} />
@@ -39,12 +42,7 @@ export default function Layout({ title, children }) {
                 Electric Larry&apos;s
               </a>
             </Link>
-            <div className="flex justify-center align-middle w-1/2 md:inline sm:hidden">
-              <input type="text" className="w-5/6 h-1/2 m-2"></input>
-              <button>
-                <SearchCircleIcon className="inline h-7 w-7" />
-              </button>
-            </div>
+            <Search placeholder="Explore our oddities!" />
             <div>
               <Link href="/cart">
                 <a className="p-4">
@@ -64,7 +62,7 @@ export default function Layout({ title, children }) {
                   <Menu.Button className="tracking-wide font-thin">
                     {session.user.name}
                   </Menu.Button>
-                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white mt-4 shadow-lg">
+                  <Menu.Items className="absolute right-0 w-56 origin-top-right mt-4 shadow-lg bg-blue z-10">
                     <Menu.Item>
                       <DropdownLink className="dropdown-link" href="/profile">
                         Profile

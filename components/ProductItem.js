@@ -14,7 +14,7 @@ export default function ProductItem({ product, addToCartHandler }) {
           />
         </a>
       </Link>
-      <div className="flex flex-col items-center justify-center p-5 hover:scale-125 transition-all duration-300 ease-in-out">
+      <div className="flex flex-col items-center justify-center p-5 hover:scale-110 transition-all duration-300 ease-in-out">
         <Link href={`/product/${product.slug}`}>
           <a>
             <h2 className="text-xl">{product.name}</h2>

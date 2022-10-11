@@ -60,12 +60,12 @@ export default function ProductScreen(props) {
         <div>
           <div className="card p-5">
             <div className="mb-2 flex justify-between">
-              <div>Price</div>
-              <div>${product.price}</div>
+              <div className="text-orange p-2">Price</div>
+              <div className="text-lg">${product.price}</div>
             </div>
             <div className="mb-2 flex justify-between">
-              <div>Do we have it? </div>
-              <div>
+              <div className="text-orange p-2">In Stock? </div>
+              <div className="mt-2">
                 {product.countInStock > 0
                   ? "Yeah, we've got at least one!"
                   : "Dang Nabbit, I think we sold 'em all!"}
@@ -80,7 +80,7 @@ export default function ProductScreen(props) {
             {product.category == "tv" ||
             (product.category == "movie" && product.countInStock >= 1) ? (
               <button className="primary-button w-full mt-2">
-                Rent It for a Week!
+                Rent It for a Week! <br /> (Only $1.99)
               </button>
             ) : (
               ""
