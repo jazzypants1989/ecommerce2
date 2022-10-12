@@ -46,12 +46,10 @@ export default function Home({ products }) {
 export async function getServerSideProps() {
   await db.connect();
   const products = await Product.find().lean();
-  const categories = products.map((product) => product.category);
   await db.disconnect();
   return {
     props: {
       products: products.map(db.convertDocToObj),
-      categories: categories,
     },
   };
 }
