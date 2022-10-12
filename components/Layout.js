@@ -12,7 +12,7 @@ import HeadComponent from "./HeadComponent";
 import { Store } from "../utils/Store";
 import Search from "./SearchWithUseRef";
 
-export default function Layout({ title, children }) {
+export default function Layout({ title, description, tags, children }) {
   const { status, data: session } = useSession();
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
@@ -30,7 +30,7 @@ export default function Layout({ title, children }) {
 
   return (
     <>
-      <HeadComponent title={title} />
+      <HeadComponent title={title} description={description} tags={tags} />
 
       <ToastContainer position="bottom-center" limit={1} theme="dark" />
 

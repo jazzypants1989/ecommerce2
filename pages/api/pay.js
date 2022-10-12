@@ -1,5 +1,8 @@
 import { client } from "square";
 import { randomUUID } from "crypto";
+
+let globalThis = globalThis || window;
+let BigInt = globalThis.BigInt;
 BigInt.prototype.toJSON = function () {
   return this.toString();
 };

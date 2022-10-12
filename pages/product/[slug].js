@@ -33,7 +33,11 @@ export default function ProductScreen(props) {
   };
 
   return (
-    <Layout title={product.name}>
+    <Layout
+      title={product.name}
+      description={product.description}
+      tags={product.tags}
+    >
       <div className="py-2">
         <Link href="/">
           <a className="hover:text-Green">back to products</a>
