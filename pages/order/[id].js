@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import { useEffect, useReducer } from "react";
 import { toast } from "react-toastify";
 import Layout from "../../components/Layout";
-import Pay from "../../components/Pay";
 import { getError } from "../../utils/error";
 
 function reducer(state, action) {
@@ -281,7 +280,6 @@ function OrderScreen() {
                           onApprove={onApprove}
                           onError={onError}
                         ></PayPalButtons>
-                        <Pay />
                       </div>
                     )}
                     {loadingPay && <div>Loading...</div>}
