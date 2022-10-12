@@ -83,8 +83,11 @@ function AdminUsersScreen() {
             </li>
             <li>
               <Link href="/admin/users">
-                <a className="font-bold">Users</a>
+                <a className="font-bold text-Green">Users</a>
               </Link>
+            </li>
+            <li>
+              <Link href="/admin/rentals">Rentals</Link>
             </li>
           </ul>
         </div>

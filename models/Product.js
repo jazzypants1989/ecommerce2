@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema(
     countInStock: { type: Number, required: true, default: 0 },
     description: { type: String, required: true },
     tags: { type: String, required: true },
-    isRented: { type: Boolean },
+    isRented: { type: Boolean, default: false },
   },
   {
     timestamps: true,

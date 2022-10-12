@@ -32,7 +32,7 @@ export default function Search(props) {
   }, [searchTerm, doSearch]);
 
   return (
-    <div className="relative w-1/2 z-10 md:inline sm:hidden">
+    <div className="relative w-1/3 z-10 md:inline sm:hidden">
       <input
         type="text"
         name="search"

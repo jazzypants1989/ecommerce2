@@ -33,7 +33,7 @@ function reducer(state, action) {
       state;
   }
 }
-export default function AdminProdcutsScreen() {
+export default function AdminProductsScreen() {
   const router = useRouter();
 
   const [
@@ -105,11 +105,14 @@ export default function AdminProdcutsScreen() {
             </li>
             <li>
               <Link href="/admin/products">
-                <a className="font-bold">Products</a>
+                <a className="font-bold text-Green">Products</a>
               </Link>
             </li>
             <li>
               <Link href="/admin/users">Users</Link>
+            </li>
+            <li>
+              <Link href="/admin/rentals">Rentals</Link>
             </li>
           </ul>
         </div>
@@ -179,4 +182,4 @@ export default function AdminProdcutsScreen() {
   );
 }
 
-AdminProdcutsScreen.auth = { adminOnly: true };
+AdminProductsScreen.auth = { adminOnly: true };

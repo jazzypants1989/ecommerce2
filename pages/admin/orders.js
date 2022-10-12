@@ -40,21 +40,26 @@ export default function AdminOrderScreen() {
   return (
     <Layout title="Admin Dashboard">
       <div className="grid md:grid-cols-4 md:gap-5">
-        <div>
-          <ul className="text-base">
+        <div className="flex-col text-base align-middle justify-center">
+          <ul className="align-middle">
             <li>
               <Link href="/admin/dashboard">Dashboard</Link>
             </li>
             <li>
               <Link href="/admin/orders">
-                <a className="font-bold">Orders</a>
+                <a className="font-bold text-Green">Orders</a>
               </Link>
             </li>
             <li>
-              <Link href="/admin/products">Products</Link>
+              <Link href="/admin/products">
+                <a>Products</a>
+              </Link>
             </li>
             <li>
               <Link href="/admin/users">Users</Link>
+            </li>
+            <li>
+              <Link href="/admin/rentals">Rentals</Link>
             </li>
           </ul>
         </div>

@@ -1,6 +1,6 @@
 import { getSession } from "next-auth/react";
-import Order from "../../../../models/Order";
-import db from "../../../../utils/db";
+import Order from "../../../../../models/Product";
+import db from "../../../../../utils/db";
 
 const handler = async (req, res) => {
   const session = await getSession({ req });
@@ -9,9 +9,9 @@ const handler = async (req, res) => {
   }
   if (req.method === "GET") {
     await db.connect();
-    const orders = await Order.find({}).populate("user", "name");
+    const order = await Order.findById(req.query.id);
     await db.disconnect();
-    res.send(orders);
+    res.send(order);
   } else if (req.method === "PUT") {
     return updateHandler(req, res);
   } else if (req.method === "DELETE") {

@@ -38,7 +38,7 @@ export default function Layout({ title, children }) {
         <header>
           <nav className="flex h-12 items-center px-4 justify-between shadow-md">
             <Link href="/">
-              <a className="text-4xl font-thin lg:text-3xl sm:text-lg">
+              <a className="text-4xl font-thin lg:text-3xl sm:text-lg hover:text-Green">
                 Electric Larry&apos;s
               </a>
             </Link>
@@ -59,7 +59,7 @@ export default function Layout({ title, children }) {
                 "Loading"
               ) : session?.user ? (
                 <Menu as="div" className="relative inline-block">
-                  <Menu.Button className="tracking-wide font-thin">
+                  <Menu.Button className="tracking-wide font-thin hover:text-orange">
                     {session.user.name}
                   </Menu.Button>
                   <Menu.Items className="absolute right-0 w-56 origin-top-right mt-4 shadow-lg bg-blue z-10">
@@ -99,7 +99,7 @@ export default function Layout({ title, children }) {
                 </Menu>
               ) : (
                 <Link href="/login">
-                  <a className="p-2">Login</a>
+                  <a className="p-2 hover:text-Green">Log-in!</a>
                 </Link>
               )}
             </div>

@@ -32,6 +32,8 @@ textarea {
   background-size: cover;
   min-height: 88vh;
   min-width: 75vw;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   @apply flex text-Black;
 }

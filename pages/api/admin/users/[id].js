@@ -1,17 +1,17 @@
-import User from '../../../../models/User';
-import db from '../../../../utils/db';
-import { getSession } from 'next-auth/react';
+import User from "../../../../models/User";
+import db from "../../../../utils/db";
+import { getSession } from "next-auth/react";
 
 const handler = async (req, res) => {
   const session = await getSession({ req });
   if (!session || !session.user.isAdmin) {
-    return res.status(401).send('admin signin required');
+    return res.status(401).send("admin signin required");
   }
 
-  if (req.method === 'DELETE') {
+  if (req.method === "DELETE") {
     return deleteHandler(req, res);
   } else {
-    return res.status(400).send({ message: 'Method not allowed' });
+    return res.status(400).send({ message: "Method not allowed" });
   }
 };
 
@@ -19,15 +19,17 @@ const deleteHandler = async (req, res) => {
   await db.connect();
   const user = await User.findById(req.query.id);
   if (user) {
-    if (user.email === 'admin@example.com') {
-      return res.status(400).send({ message: 'Can not delete admin' });
+    if (user.email === "jessepence@gmail.com") {
+      return res
+        .status(400)
+        .send({ message: "YOU THINK YOU CAN DELETE ME, YOU FOOL!?!?!?" });
     }
     await user.remove();
     await db.disconnect();
-    res.send({ message: 'User Deleted' });
+    res.send({ message: "User Deleted" });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'User Not Found' });
+    res.status(404).send({ message: "User Not Found" });
   }
 };
 

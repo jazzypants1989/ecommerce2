@@ -1,3 +1,4 @@
+import * as React from "react";
 import { CreditCard, PaymentForm } from "react-square-web-payments-sdk";
 
 const Pay = () => {
@@ -5,7 +6,7 @@ const Pay = () => {
     <PaymentForm
       applicationId="sandbox-sq0idb-HODHzphjx6r9d6gW_e28Bg"
       cardTokenizeResponseReceived={async (token, buyer) => {
-        alert(JSON.stringify(token, null, 2));
+        console.info({ token, buyer });
       }}
       createVerificationDetails={() => ({
         amount: "100",
@@ -14,7 +15,12 @@ const Pay = () => {
         billingContact: {
           familyName: "Smith",
           givenName: "John",
-          email: "dingdong@ding.com",
+          email: "ding@dong.com",
+          country: "US",
+          city: "San Francisco",
+          addressLines: ["123 Market St"],
+          postalCode: "94114",
+          phone: "415-555-5555",
         },
       })}
       locationId="LRYJ92HXN7XYZ"

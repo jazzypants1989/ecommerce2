@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext } from "react";
 import { toast } from "react-toastify";
+import CategoryBox from "../components/CategoryBox";
 import Layout from "../components/Layout";
 import ProductItem from "../components/ProductItem";
 import Product from "../models/Product";
@@ -28,7 +29,8 @@ export default function Home({ products }) {
 
   return (
     <Layout title="Home Page">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+        <CategoryBox categories={products.categories} />
         {products.map((product) => (
           <ProductItem
             product={product}
@@ -44,9 +46,12 @@ export default function Home({ products }) {
 export async function getServerSideProps() {
   await db.connect();
   const products = await Product.find().lean();
+  const categories = products.map((product) => product.category);
+  await db.disconnect();
   return {
     props: {
       products: products.map(db.convertDocToObj),
+      categories: categories,
     },
   };
 }

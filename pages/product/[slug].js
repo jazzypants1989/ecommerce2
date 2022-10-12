@@ -35,15 +35,17 @@ export default function ProductScreen(props) {
   return (
     <Layout title={product.name}>
       <div className="py-2">
-        <Link href="/">back to products</Link>
+        <Link href="/">
+          <a className="hover:text-Green">back to products</a>
+        </Link>
       </div>
       <div className="grid md:grid-cols-4 md:gap-3">
         <div className="md:col-span-2">
           <Image
             src={product.image}
             alt={product.name}
-            width={640}
-            height={640}
+            width={1024}
+            height={768}
             layout="responsive"
           ></Image>
         </div>
@@ -78,7 +80,7 @@ export default function ProductScreen(props) {
               Add to cart
             </button>
             {product.category == "TV" ||
-            (product.category == "movie" && product.countInStock >= 1) ? (
+            (product.category == "movies" && product.countInStock >= 1) ? (
               <button className="primary-button w-full mt-2">
                 Rent It for a Week! <br /> (Only $1.99)
               </button>

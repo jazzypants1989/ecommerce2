@@ -17,6 +17,7 @@
     "bcryptjs": "^2.4.3",
     "chart.js": "^3.8.0",
     "cloudinary": "^1.30.0",
+    "crypto": "^1.0.1",
     "js-cookie": "^3.0.1",
     "mongoose": "^6.3.4",
     "next": "12.1.5",
