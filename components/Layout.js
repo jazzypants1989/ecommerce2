@@ -10,7 +10,6 @@ import DropdownLink from "./DropdownLink";
 import Footer from "./Footer";
 import HeadComponent from "./HeadComponent";
 import { Store } from "../utils/Store";
-import Search from "./SearchWithUseRef";
 
 export default function Layout({ title, description, tags, children }) {
   const { status, data: session } = useSession();
@@ -42,7 +41,6 @@ export default function Layout({ title, description, tags, children }) {
                 Electric Larry&apos;s
               </a>
             </Link>
-            <Search placeholder="Explore our oddities!" />
             <div>
               <Link href="/cart">
                 <a className="p-4">
