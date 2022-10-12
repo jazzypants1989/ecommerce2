@@ -20,7 +20,7 @@ export default async function searchHandler(req, res) {
       },
     },
     {
-      $limit: 20,
+      $limit: 10,
     },
   ]);
   res.send(products);
